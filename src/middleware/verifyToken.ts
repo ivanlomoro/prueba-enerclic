@@ -3,7 +3,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 import 'dotenv/config';
 
 export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
-  const token = req.headers['authorization']?.split(' ')[1]; // "Bearer TOKEN"
+  const token = req.headers['authorization']?.split(' ')[1];
 
   if (!token) {
     return res.status(403).json({ error: 'Se requiere un token para autenticación' });
