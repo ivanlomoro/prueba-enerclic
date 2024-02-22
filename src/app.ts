@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/dispositivo", dispositivoRoutes)
+app.use("/", dispositivoRoutes)
 
 app.get("/", (req, res) => {
     res.status(200).json({message:"Prueba Enerclick api"})

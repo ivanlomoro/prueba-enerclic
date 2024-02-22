@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import prismaClient from "../database/client";
+import buildHierarchy from "../utils/buildHierarchy";
 
 
 export const insertDispositivos = async (req: Request, res: Response) => {
@@ -27,12 +28,14 @@ export const insertDispositivos = async (req: Request, res: Response) => {
     }
 };
 
-export const getAllDispositivos = async (req: Request, res: Response) => {
+
+export const getData = async (req: Request, res: Response) => {
     try {
         const dispositivos = await prismaClient.dispositivo.findMany();
-        res.json(dispositivos);
+        const dispositivosJerarquicos = buildHierarchy(dispositivos);
+        res.json(dispositivosJerarquicos);
     } catch (error) {
-        console.error("Error al obtener todos los dispositivos: ", error);
-        res.status(500).json({ error: "Error al obtener todos los dispositivos." });
+        console.error("Error al obtener dispositivos: ", error);
+        res.status(500).json({ error: "Error al obtener dispositivos." });
     }
 };
