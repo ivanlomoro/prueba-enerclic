@@ -1,14 +1,15 @@
 import express from 'express';
+import dispositivoRoutes from './routes/dispositivos.routes';
 
+const cors = require("cors");
 const app = express();
-const PORT = 3000;
-
 app.use(express.json());
+app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send('API is running...');
-});
+app.use("/dispositivo", dispositivoRoutes)
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+app.get("/", (req, res) => {
+    res.status(200).json({message:"Prueba Enerclick api"})
+})
+
+export default app;
