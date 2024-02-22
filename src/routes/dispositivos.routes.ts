@@ -3,7 +3,7 @@ import {  getData, insertDispositivos } from '../controllers/dispositivoControll
 
 const dispositivoRoutes = Router()
 
-dispositivoRoutes.post('/', insertDispositivos)
+dispositivoRoutes.post('/dispositivo', insertDispositivos)
 dispositivoRoutes.get('/getData', getData)
 
 export default dispositivoRoutes
