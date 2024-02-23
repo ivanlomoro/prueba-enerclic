@@ -21,10 +21,10 @@ API desarrollada para la gestión de dispositivos y autenticación de usuarios. 
 Prisma es un ORM (Object-Relational Mapping) moderno y seguro que facilita el trabajo con bases de datos en aplicaciones Node.js.
 Elegi utilizarlo en este proyecto por varias razones:
 
--Productividad y facilidad de uso.
--Seguridad.
--Migraciones declarativas y control de Esquemas.
--Lo he utilizado con anterioridad y además cuenta con una amplia documentación.
+- Productividad y facilidad de uso.
+- Seguridad.
+- Migraciones declarativas y control de Esquemas.
+- Lo he utilizado con anterioridad y además cuenta con una amplia documentación.
 
 ## Instalación
 
