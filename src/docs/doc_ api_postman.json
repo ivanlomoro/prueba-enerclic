@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "353859b1-382c-4dfe-81fe-d3181f454aba",
+		"name": "Documentación API prueba-enerclick",
+		"description": "## Descripción General\n\nEsta documentación describe los endpoints disponibles en la API de prueba-enerclick, diseñada para manejar dispositivos y autenticación de usuarios.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30841911"
+	},
+	"item": [
+		{
+			"name": "insertDispositivos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/dispositivo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dispositivo"
+					]
+				},
+				"description": "#### Insertar Dispositivos\n\n- **URL**: `/dispositivo`\n- **Método**: POST\n- **Descripción**: Se utilizó una sola vez para insertar todos los dispositivos en la base de datos.\n    \n- **Respuestas**:\n    - **201 OK**: Dispositivos insertados correctamente.\n    - **403 Forbidden**: Acceso denegado.\n    - **500 Internal Server Error**: Error al insertar dispositivos."
+			},
+			"response": []
+		},
+		{
+			"name": "getData",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcwODY0Mzk5NiwiZXhwIjoxNzA4NjQ3NTk2fQ.RxQReTosuJV0F-1OE09qfkPSYnufvSr0EN-XAX9IkyI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/getData",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getData"
+					]
+				},
+				"description": "#### Obtener Datos\n\n- **URL**: `/getData`\n- **Método**: GET\n- **Descripción**: Obtiene datos de dispositivos de forma jerárquica.\n- **Autorización**: Requiere token JWT en el header `Authorization`.\n- **Respuestas**:\n    - **200 OK**: Devuelve datos de dispositivos.\n    - **401 Unauthorized**: Token inválido o expirado.\n    - **500 Internal Server Error**: Error al obtener los datos.\n\n## Autorización\n\nPara acceder a los endpoints protegidos, es necesario incluir en las pestaña authorization:\n\n- Type: `Bearer Token`\n- Token: Token obtenido\n    \n\nEste token JWT se obtiene tras un inicio de sesión exitoso."
+			},
+			"response": []
+		},
+		{
+			"name": "createUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Test User\",\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/createUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"createUser"
+					]
+				},
+				"description": "#### Crear Usuario\n\n- **URL**: `/createUser`\n- **Método**: POST\n- **Descripción**: Registra un nuevo usuario en el sistema.\n- **Respuestas**:\n    - **201 Created**: Usuario creado exitosamente.\n    - **500 Internal Server Error**: Error al crear el usuario.\n- **Cuerpo de la Solicitud utilizado**:"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "#### Iniciar Sesión\n\n- **URL**: `/login`\n    \n- **Método**: POST\n    \n- **Descripción**: Autentica a un usuario y devuelve un token JWT.\n    \n- **Respuestas**:\n    \n    - **200 OK**: Devuelve un token JWT.\n        \n    - **401 Unauthorized**: Email o contraseña incorrectos.\n        \n    - **500 Internal Server Error**: Error al iniciar sesión.\n        \n- **Cuerpo de la Solicitud utilizado**:"
+			},
+			"response": []
+		}
+	]
+}

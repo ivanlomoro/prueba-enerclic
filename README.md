@@ -108,6 +108,14 @@ Este comando hace lo siguiente:
 - `-p 3000:3000`: Mapea el puerto 3000 del contenedor al puerto 3000 de tu máquina local, permitiéndote acceder a la API a través de `http://localhost:3000`.
 - `node-api-enerclick:latest`: Especifica la imagen Docker a utilizar para crear el contenedor.
 
+## Documentación Swagger
+
+La documentación interactiva de la API está disponible en Swagger UI. Puede acceder a ella navegando a [http://localhost:3000/api-docs](http://localhost:3000/api-docs) después de iniciar el servidor. Esta documentación ofrece una visión detallada de todos los endpoints disponibles, incluidos los parámetros de solicitud, los cuerpos de las respuestas y la autenticación requerida.
+
+## Documentación de Endpoints en Postman
+
+Encontrarás una colección de Postman que incluye todos los endpoints de la API, junto con ejemplos de solicitudes y respuestas, en la carpeta `docs` de este proyecto (también les adjunto la exportación en el correo enviado). Esta colección puede ser importada a Postman para ver la documentación y explorar de la API.
+
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.

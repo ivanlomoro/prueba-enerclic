@@ -1,0 +1,195 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documentación API prueba-enerclick",
+    "version": "1.0.0",
+    "description": "Esta documentación describe los endpoints disponibles en la API de prueba-enerclick, diseñada para manejar dispositivos y autenticación de usuarios."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/dispositivo": {
+      "post": {
+        "summary": "Insertar Dispositivos",
+        "description": "Se utilizó una sola vez para insertar todos los dispositivos en la base de datos.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "example": {}
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Dispositivos insertados correctamente."
+          },
+          "403": {
+            "description": "Acceso denegado."
+          },
+          "500": {
+            "description": "Error al insertar dispositivos."
+          }
+        }
+      }
+    },
+    "/getData": {
+      "get": {
+        "summary": "Obtener Datos",
+        "description": "Obtiene datos de dispositivos de forma jerárquica. Requiere token JWT en el header Authorization.",
+        "security": [
+          {
+            "bearerAuth": ["Type: Bearer Token | Token: Token obtenido. Este token JWT se obtiene tras un inicio de sesión exitoso."]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Devuelve datos de dispositivos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {},
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Token inválido o expirado."
+          },
+          "500": {
+            "description": "Error al obtener los datos."
+          }
+        }
+      }
+    },
+    "/createUser": {
+      "post": {
+        "summary": "Crear Usuario",
+        "description": "Registra un nuevo usuario en el sistema.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "nombre",
+                  "email",
+                  "password"
+                ],
+                "example": {
+                  "nombre": "Test User",
+                  "email": "test@example.com",
+                  "password": "password123"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuario creado exitosamente."
+          },
+          "500": {
+            "description": "Error al crear el usuario."
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Iniciar Sesión",
+        "description": "Autentica a un usuario y devuelve un token JWT.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "example": {
+                  "email": "test@example.com",
+                  "password": "password123"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Devuelve un token JWT.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email o contraseña incorrectos."
+          },
+          "500": {
+            "description": "Error al iniciar sesión."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}
