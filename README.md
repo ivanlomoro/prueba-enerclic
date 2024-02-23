@@ -28,7 +28,7 @@ Crea un archivo `.env` en la raíz del proyecto y añade las siguientes variable
 
 ```env
 PORT=3000
-JWT_SECRET=enerclick
+JWT_SECRET=enerclic
 ```
 
 ## Ejecutar Migraciones
