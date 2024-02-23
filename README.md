@@ -80,6 +80,34 @@ Para acceder a los endpoints protegidos, incluye el token JWT en el header `Auth
 Authorization: Bearer <tuTokenJWT>
 ```
 
+## Dockerización
+
+La API está dockerizada para facilitar su despliegue y ejecución en cualquier entorno que soporte Docker, proporcionando así una experiencia de desarrollo y despliegue consistente.
+
+### Construir la Imagen Docker
+
+Antes de ejecutar la API en un contenedor Docker, necesitas construir la imagen Docker basada en el `Dockerfile` incluido en el proyecto. Ejecuta el siguiente comando en la terminal desde la raíz del proyecto para construir la imagen:
+
+```bash
+docker build -t node-api-enerclic:latest
+```
+
+Este comando construye una nueva imagen Docker llamada `node-api-enerclic` con la etiqueta `latest`, basada en las instrucciones proporcionadas en el `Dockerfile`.
+
+### Ejecutar la API en un Contenedor Docker
+
+Una vez construida la imagen, puedes ejecutar la API en un contenedor Docker utilizando el siguiente comando:
+
+```bash
+docker run --env-file=./.env -p 3000:3000 node-api-enerclick:latest
+```
+
+Este comando hace lo siguiente:
+
+- `--env-file=./.env`: Especifica el archivo de variables de entorno que el contenedor debe utilizar. Asegúrate de que el archivo `.env` esté correctamente configurado y presente en la ubicación especificada.
+- `-p 3000:3000`: Mapea el puerto 3000 del contenedor al puerto 3000 de tu máquina local, permitiéndote acceder a la API a través de `http://localhost:3000`.
+- `node-api-enerclick:latest`: Especifica la imagen Docker a utilizar para crear el contenedor.
+
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
